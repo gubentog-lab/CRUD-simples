@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CRUD</title>
+</head>
+<body>
+    <p>Adicione uma tarefa</p>
+        <input id="entrada" type="text"/>
+        <button onclick="salvarDados()">Salvar</button>
+
+    <br>
+
+    <p>Lista de tarefas</p>
+        <div id="editar"></div>
+
+        <div>
+            <ul id="resultados"></ul>
+        </div>
+
+        <script>
+            let listaTarefas = [];
+            let index = 0;
+        
+            function salvarDados() {
+                let entrada = document.getElementById("entrada").value;
+        
+                let entradaObj = {
+                    id: index,
+                    texto: entrada
+                };
+        
+                index++;
+        
+                listaTarefas.push(entradaObj);
+        
+                mostrar();
+            }
+        
+            function mostrar() {
+                let ul = document.getElementById("resultados");
+                let html = "";
+        
+                listaTarefas.forEach(elemento => {
+                    html += `<li>
+                         ${elemento.texto}
+                            <button onclick="editar(${elemento.id})">
+                                Editar
+                            </button>
+                            <button onclick="deletar(${elemento.id})">
+                                Deletar
+                            </button>
+                        </li>`;
+                });
+        
+                ul.innerHTML = html;
+            }
+        
+            function editar(id) {
+                let resultado = listaTarefas.find(obj => obj.id === id);
+                let html = `<input type="text" id="textoEditar">
+                            <button onclick="editarDados(${id})">Editar</button>`;
+                let diveditar = document.getElementById('editar');
+                diveditar.innerHTML = html;
+
+            }
+
+            function editarDados (id) {
+                let textoEditar = document.getElementById("textoEditar").value;
+                let resultado = listaTarefas.find(obj => obj.id === id);
+                resultado.texto = textoEditar;
+
+                mostrar();
+                let diveditar = document.getElementById('editar');
+                diveditar.innerHTML = "";
+            }
+
+            function deletar(id) {
+                let novaLista = listaTarefas.filter(obj => obj.id !== id);
+                listaTarefas = novaLista;
+                mostrar();
+            }
+        </script>        
+</body>
+</html>

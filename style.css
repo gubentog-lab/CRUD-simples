@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 60px 20px;
+}
+
+/* Títulos */
+p {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+/* Campo de adicionar tarefa */
+#entrada {
+    width: 450px;
+    height: 50px;
+
+    padding: 12px 18px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 17px;
+    outline: none;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+
+    margin-bottom: 12px;
+}
+
+#entrada:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+
+/* Botões */
+button {
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px 20px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Botão Salvar */
+body > button {
+    background-color: #28a745;
+    color: white;
+
+    margin-bottom: 45px;
+}
+
+body > button:hover {
+    background-color: #218838;
+}
+
+/* Lista */
+#resultados {
+    list-style: none;
+
+    width: 600px;
+    max-width: 90vw;
+
+    margin-top: 10px;
+}
+
+/* Cada tarefa */
+#resultados li {
+    background: white;
+
+    min-height: 65px;
+
+    margin-bottom: 15px;
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+
+    color: #333;
+    font-size: 17px;
+
+    word-break: break-word;
+}
+
+/* Texto da tarefa */
+#resultados li {
+    line-height: 1.4;
+}
+
+/* Faz o texto ocupar o espaço disponível */
+#resultados li::first-line {
+    line-height: 1.4;
+}
+
+/* Botão Editar */
+#resultados li button:first-of-type {
+    background-color: #ffc107;
+    color: #333;
+
+    margin-left: auto;
+}
+
+#resultados li button:first-of-type:hover {
+    background-color: #e0a800;
+}
+
+/* Botão Deletar */
+#resultados li button:last-of-type {
+    background-color: #dc3545;
+    color: white;
+}
+
+#resultados li button:last-of-type:hover {
+    background-color: #bb2d3b;
+}
+
+/* Área de edição */
+#editar {
+    width: 600px;
+    max-width: 90vw;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Campo de edição */
+#textoEditar {
+    flex: 1;
+
+    height: 45px;
+
+    padding: 10px 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Botão editar */
+#editar button {
+    background-color: #28a745;
+    color: white;
+
+    height: 45px;
+}
+
+#editar button:hover {
+    background-color: #218838;
+}
+
+/* Celular */
+@media (max-width: 600px) {
+
+    body {
+        padding: 40px 15px;
+    }
+
+    p {
+        font-size: 22px;
+    }
+
+    #entrada {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    body > button {
+        margin-top: 5px;
+        margin-bottom: 40px;
+    }
+
+    #resultados {
+        width: 100%;
+    }
+
+    #resultados li {
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+
+    #resultados li button:first-of-type {
+        margin-left: 0;
+    }
+
+    #editar {
+        width: 100%;
+    }
+
+    #textoEditar {
+        min-width: 0;
+    }
+}
